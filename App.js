@@ -1,21 +1,32 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
+
+import HomeScreen from './components/HomeScreen'
+import PianoScreen from './components/PianoScreen'
+import SaveScreen from './components/SaveScreen'
+
+const RootStack = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen
+    },
+    Piano: {
+      screen: PianoScreen
+    },
+    Save: {
+      screen: SaveScreen
+    },
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
+const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
+    return <AppContainer />; 
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
