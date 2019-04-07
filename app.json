@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "PianoApp",
-    "slug": "pianoapp",
+    "name": "final_project",
+    "slug": "final_project",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
