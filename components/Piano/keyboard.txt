@@ -12,50 +12,53 @@ export default class Keyboard extends Component {
     }
 
     _onPressKey = async (key) => {
-       console.log("Pressed key: " + key)
+        console.log("Pressed key: " + key)
 
-       switch(key) {
-           case "A": {
-               const soundObject = new Audio.Sound();
-               await soundObject.loadAsync(require('../../assets/audio/piano-A.wav'));
-               await soundObject.playAsync()
-           }
-           break;
-           case "B": {
-                   const soundObject = new Audio.Sound();
-                   await soundObject.loadAsync(require('../../assets/audio/piano-B.wav'));
-                   await soundObject.playAsync()
-           }
-           break;
-           case "C": {
-                   const soundObject = new Audio.Sound();
-                   await soundObject.loadAsync(require('../../assets/audio/piano-C.wav'));
-                   await soundObject.playAsync()
-           }
-           break;
-           case "D": {
-                   const soundObject = new Audio.Sound();
-                   await soundObject.loadAsync(require('../../assets/audio/piano-D.wav'));
-                   await soundObject.playAsync()
-           }
-           break;
-           case "E": {
-                   const soundObject = new Audio.Sound();
-                   await soundObject.loadAsync(require('../../assets/audio/piano-E.wav'));
-                   await soundObject.playAsync()            }
-           break;
-           case "F": {
-                   const soundObject = new Audio.Sound();
-                   await soundObject.loadAsync(require('../../assets/audio/piano-F.wav'));
-                   await soundObject.playAsync()            }
-           break;
-           case "G": {
-                   const soundObject = new Audio.Sound();
-                   await soundObject.loadAsync(require('../../assets/audio/piano-G.wav'));
-                   await soundObject.playAsync()            }
-           break;
-       }
-   }
+        const soundObject = new Audio.Sound();
+        try {
+            switch(key){
+                case "A"{
+                    await soundObject.loadAsync(require('../../assets/audio/piano-A.wav'));
+                    await soundObject.playAsync();
+                    // KEY A is playing!
+                }
+                await soundObject.UnloadAsync();
+
+                case "B"{
+                    await soundObject.loadAsync(require('../../assets/audio/piano-B.wav'));
+                    await soundObject.playAsync();
+                    // KEY A is playing!
+                }
+                case "C"{
+                    await soundObject.loadAsync(require('../../assets/audio/piano-C.wav'));
+                    await soundObject.playAsync();
+                    // KEY A is playing!
+                }
+                case "D"{
+                    await soundObject.loadAsync(require('../../assets/audio/piano-D.wav'));
+                    await soundObject.playAsync();
+                    // KEY A is playing!
+                }
+                case "E"{
+                    await soundObject.loadAsync(require('../../assets/audio/piano-E.wav'));
+                    await soundObject.playAsync();
+                    // KEY A is playing!
+                }
+                case "F"{
+                    await soundObject.loadAsync(require('../../assets/audio/piano-F.wav'));
+                    await soundObject.playAsync();
+                    // KEY A is playing!
+                }
+                case "G"{
+                    await soundObject.loadAsync(require('../../assets/audio/piano-G.wav'));
+                    await soundObject.playAsync();
+                    // KEY A is playing!
+                }
+                break;
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
 
     render() {
