@@ -4,6 +4,7 @@ var WindowSizeX = Dimensions.get('window').width;
 var WindowSizeY = Dimensions.get('window').height;
 export default class HomePage extends React.Component {
 
+
   componentWillMount = () => {
       this.animatedWidth = new Animated.Value(5000)
       this.animatedHeight = new Animated.Value(5000)
@@ -26,7 +27,7 @@ export default class HomePage extends React.Component {
     return (
       <View style={styles.container}>
         <ImageBackground source={require('../img/background.png')} style={styles.backgroundImage}>
-          <View style={{bottom: 50, left: 150, right: 0, width: WindowSizeX, height: WindowSizeY}}>
+          <View style={{bottom: 200, left: 150, right: 0, width: WindowSizeX, height: WindowSizeY}}>
             <View style={styles.TextContainer}>
               <Text style={{fontWeight: 'bold', fontSize: 42, color: 'blue', fontStyle: 'italic', textShadowOffset: {width: 2,height: 2}, textShadowColor: 'red',}}>Please, Play That song again!</Text>
               <Text style={{fontWeight: 'bold', fontSize: 42, color: 'red', fontStyle: 'italic', textShadowOffset: {width: 2,height: 2}, textShadowColor: 'blue',}}>Mr.
@@ -35,7 +36,7 @@ export default class HomePage extends React.Component {
                 <View style={styles.ButtonContainer1}>
                   <View style={styles.ButtonSize}>
                     <Button
-                    onPress={this.yeet}
+                    onPress={()=>this.props.navigation.navigate('Piano')}
                     title="Go to Piano"
                     color='#DCE2FA'
                     />
@@ -44,7 +45,7 @@ export default class HomePage extends React.Component {
                 <View style={styles.ButtonContainer2}>
                   <View style={styles.ButtonSize}>
                     <Button
-                      onPress={this.yeet}
+                      onPress={()=>this.props.navigation.navigate('Map')}
                       title="Go to Map"
                       color='#DCE2FA'
                     />

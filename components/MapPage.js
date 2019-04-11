@@ -177,16 +177,18 @@ const styles = StyleSheet.create({
         top: 90,
         position:'absolute',
         alignItems: 'center',
-        width: 150,
+        width: 165,
         height: 30,
         backgroundColor: '#B4264E',
+        left: 100
     },
     submit:{
         top:125,
         position:'absolute',
         //left: 250,
         width: 250,
-        padding:15
+        padding:15,
+        left: 60
     },
     backgroundImage: {
         flex: 1,
