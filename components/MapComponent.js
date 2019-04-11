@@ -50,6 +50,21 @@ export default class MapComponent extends Component {
         (error) => alert(JSON.stringify(error)));
     }
 
+    setLocation(){
+        fetch('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAtQ-MeigubB1_OqzVpz-5HEvSytmjePcs&address='+this.state.location)
+            .then((response) => response.json())
+            .then((response) => {
+                this.setState({
+                    region:{
+                        latitude:response.results[0].geometry.location.lat,
+                        longitude:response.results[0].geometry.location.lng,
+                        longitudeDelta:0.08,
+                        latitudeDelta:0.08,
+                    }
+                });
+            })  
+    }
+
     fetchTodos(){
         const tempmarker =[];
         let v = 0;
@@ -63,15 +78,26 @@ export default class MapComponent extends Component {
                 this.setState({
                     markers:tempmarker
                 });
-                this.setState({
-                    region:{
-                        latitude:response.results[0].geometry.location.lat,
-                        longitude:response.results[0].geometry.location.lng,
-                        longitudeDelta:0.22,
-                        latitudeDelta:0.22,
-                    }
-                });
-            })  
+                console.log(this.state.markers);
+        })  
+    }
+
+    clear(){
+        this.setState({
+             region:{
+                latitude:0,
+                latitudeDelta:0,
+                longitude:0,
+                longitudeDelta:0,
+            },
+            markers:[]     
+        });
+    }
+
+    submit(){
+        this.clear();
+        this.setLocation();
+        this.fetchTodos();
     }
 
     onRegionChange(region){
@@ -104,7 +130,7 @@ export default class MapComponent extends Component {
                     />
                 </View>
                 <View style = {styles.submit}>
-                    <Button title = 'Enter Your Location And Find The Piano Store Near You!' onPress={()=> this.fetchTodos()}/>
+                    <Button title = 'Enter Your Location And Find The Piano Store Near You!' onPress={()=> this.submit()}/>
                 </View>
             </View>
         )
